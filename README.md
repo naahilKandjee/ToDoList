@@ -1,6 +1,8 @@
 
 # ToDoList Application
 
+Mehdi et Naahil
+
 Ce projet est une application ToDoList mobile développée avec React Native et Expo, utilisant Firebase pour l'authentification, le stockage des données, et la gestion des images.
 
 ## Prérequis

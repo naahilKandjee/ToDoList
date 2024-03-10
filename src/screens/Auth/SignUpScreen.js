@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { signUp } from '../../api/auth';
 
 const SignUpScreen = ({ navigation }) => {
@@ -10,7 +10,6 @@ const SignUpScreen = ({ navigation }) => {
   const handleSignUp = async () => {
     try {
       await signUp(email, password);
-      navigation.navigate('SignInScreen'); // Naviguer vers l'écran de connexion après l'inscription
     } catch (error) {
       setError(error.message);
     }
@@ -33,6 +32,9 @@ const SignUpScreen = ({ navigation }) => {
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="S'inscrire" onPress={handleSignUp} />
+      <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+        <Text style={styles.signInText}>Vous avez déjà un compte ? Se connecter</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -52,6 +54,11 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     marginBottom: 20,
+  },
+  signInText: {
+    marginTop: 20,
+    color: '#0000ff',
+    textAlign: 'center',
   },
 });
 
